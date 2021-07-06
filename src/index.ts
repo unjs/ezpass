@@ -23,7 +23,7 @@ export function createAuth (opts: CreateAuthOptions) {
 
 export function createAuthMiddleware (opts: CreateAuthOptions) {
   if (opts.enabled === false) {
-    return (_req, _res, next) => next()
+    return (_req, _res, next = noop) => next()
   }
   const auth = createAuth(opts)
 

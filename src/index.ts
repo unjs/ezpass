@@ -65,6 +65,7 @@ export function createAuthMiddleware(opts: CreateAuthOptions) {
     if (!authRes.authorized) {
       res.statusCode = 401
       res.end(authRes.message || 'Unauthorized')
+      return
     }
 
     // Good to go

@@ -26,8 +26,14 @@ export function createAuthMiddleware (opts: CreateAuthOptions) {
   return async (req, res, next = noop) => {
     // Load Session
     const sessionStr = cookie.parse(req.headers.cookie || '').session
-    const session = sessionStr ? jwt.verify(sessionStr, opts.sessionSecret) : {}
-
+    let session = {}
+    if (sessionStr) {
+      try {
+        session = jwt.verify(sessionStr, opts.sessionSecret)
+      } catch (err) {
+        // Ignore error and re-validate the session
+      }
+    }
     // Populate req.auth
     req.auth = { session }
 

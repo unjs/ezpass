@@ -1,0 +1,38 @@
+{
+  "name": "ezpass",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": "unjs/ezpass",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "unbuild",
+    "prepack": "yarn build",
+    "lint": "eslint --ext .ts src",
+    "release": "standard-version && git push --follow-tags && npm publish",
+    "dev": "nodemon"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "cookie": "^0.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "ohmyfetch": "^0.2.0",
+    "requrl": "^3.0.2",
+    "ufo": "^0.7.7"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "latest",
+    "@types/node": "^16.0.0",
+    "eslint": "latest",
+    "express": "^4.17.1",
+    "h3": "^0.2.12",
+    "jiti": "^1.10.1",
+    "listhen": "^0.2.4",
+    "nodemon": "^2.0.9",
+    "standard-version": "^9.3.0",
+    "unbuild": "^0.3.1"
+  }
+}

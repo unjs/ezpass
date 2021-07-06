@@ -11,10 +11,10 @@ export interface GithubAuthOptions {
 export const github = defineAuthProvider<GithubAuthOptions>((opts) => {
   return {
     name: 'github',
-    check(req) {
+    check (req) {
       return !!req.auth.session.user
     },
-    async authorize(req) {
+    async authorize (req) {
       // Redirect
       if (!req.url.includes('__github_callback__')) {
         return {

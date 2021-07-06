@@ -8,7 +8,7 @@ export interface BasicAuthOptions {
 export const basic = defineAuthProvider<BasicAuthOptions>((opts) => {
   return {
     name: 'basic',
-    check(req) {
+    check (req) {
       const [type, token] = (req.headers.authorization || '').split(' ')
       if (type === 'Basic') {
         const [user, pass] = Buffer.from(token, 'base64').toString().split(':')
@@ -17,7 +17,7 @@ export const basic = defineAuthProvider<BasicAuthOptions>((opts) => {
       }
       return false
     },
-    authorize() {
+    authorize () {
       return {
         authorized: false,
         message: 'Login Required',

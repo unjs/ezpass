@@ -34,6 +34,6 @@ export interface AuthImplementation {
 
 export type AuthProvider<T = any> = (options: T) => AuthImplementation
 
-export function defineAuthProvider<T = any>(provider: AuthProvider<T>): AuthProvider<T> {
+export function defineAuthProvider<T = any> (provider: AuthProvider<T>): AuthProvider<T> {
   return provider
 }

@@ -11,7 +11,7 @@ export interface CreateAuthOptions {
 
 const noop = () => { }
 
-export function createAuth(opts: CreateAuthOptions) {
+export function createAuth (opts: CreateAuthOptions) {
   const providerCtor = providers[opts.provider || 'basic'] as AuthProvider
   const provider = providerCtor(opts.providerOptions)
 
@@ -20,7 +20,7 @@ export function createAuth(opts: CreateAuthOptions) {
   }
 }
 
-export function createAuthMiddleware(opts: CreateAuthOptions) {
+export function createAuthMiddleware (opts: CreateAuthOptions) {
   const auth = createAuth(opts)
 
   return async (req, res, next = noop) => {

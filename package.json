@@ -1,6 +1,6 @@
 {
   "name": "ezpass",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "repository": "unjs/ezpass",
   "main": "./dist/index.js",

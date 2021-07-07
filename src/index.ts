@@ -76,7 +76,8 @@ export function createAuthMiddleware (opts: CreateAuthOptions) {
     // Check to render unauthenticated page
     if (!authRes.authorized) {
       res.statusCode = 401
-      res.end(authRes.message || 'Unauthorized')
+      // TODO: Support {message} and dynamic load
+      res.end(opts.unauthorizedTemplate || authRes.message || 'Unauthorized')
       return
     }
 

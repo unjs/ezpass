@@ -27,6 +27,7 @@ app.listen(3000)
 - `sessionSecret`
 - `bypass`
 - `onAuthorize`
+- `unauthorizedTemplate`
 
 ## Providers
 

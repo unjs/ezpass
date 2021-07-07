@@ -57,12 +57,13 @@ export function createAuthMiddleware (opts: CreateAuthOptions) {
     }
 
     // Update session
-    if (authRes.session) {
+    if (authRes.authorized && authRes.session) {
       Object.assign(session, authRes.session)
       if (!opts.sessionSecret) {
         throw new Error('[ezpass] Session secret is required (`sessionSecret`)')
       }
-      res.setHeader('Set-Cookie', cookie.serialize('session', jwt.sign(session, opts.sessionSecret)))
+      const sessionValue = jwt.sign(session, opts.sessionSecret)
+      res.setHeader('Set-Cookie', cookie.serialize('session', sessionValue, { path: '/', httpOnly: true }))
     }
 
     // Check for redirect

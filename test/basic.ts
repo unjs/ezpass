@@ -7,10 +7,8 @@ const app = createApp()
 app.useAsync(createAuthMiddleware({
   provider: 'basic',
   sessionSecret: 'secret',
-  providerOptions: {
-    username: 'test',
-    password: 'test'
-  }
+  username: 'test',
+  password: 'test'
 }))
 
 app.useAsync(req => `Welcome ${req.auth.session.user}!`)

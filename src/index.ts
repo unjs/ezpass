@@ -7,7 +7,7 @@ const noop = () => { }
 
 export function createAuth (opts: CreateAuthOptions) {
   const providerCtor = providers[opts.provider || 'basic'] as AuthProvider
-  const provider = providerCtor(opts.providerOptions)
+  const provider = providerCtor(opts.providerOptions || opts)
 
   return {
     provider

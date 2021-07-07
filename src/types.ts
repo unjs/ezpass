@@ -45,4 +45,5 @@ export interface CreateAuthOptions {
   bypass?: boolean
   onAuthorize?: (authReses: AuthorizeResult, req: IncomingMessage) => void | Promise<void>
   unauthorizedTemplate?: string
+  [key: string]: any
 }

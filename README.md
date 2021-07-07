@@ -12,7 +12,8 @@ const app = express()
 
 app.use(createAuthMiddleware({
   provider: 'basic',
-  providerOptions: { username: 'test', password: 'test' }
+  username: 'test',
+  password: 'test'
 }))
 
 app.use((_req, res) => { res.end(`Welcome ${req.auth.session.user}!`) })
@@ -42,10 +43,8 @@ app.listen(3000)
 ```js
 app.use(createAuthMiddleware({
   provider: 'basic',
-  providerOptions: {
-    username: 'test',
-    password: 'test'
-  }
+  username: 'test',
+  password: 'test'
 }))
 ```
 
@@ -62,10 +61,8 @@ app.use(createAuthMiddleware({
 app.use(createAuthMiddleware({
   provider: 'github',
   sessionSecret: '...',
-  providerOptions: {
-    clientId: '...',
-    clientSecret: '...',
-  }
+  clientId: '...',
+  clientSecret: '...',
 }))
 ```
 

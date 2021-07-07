@@ -26,6 +26,7 @@ app.listen(3000)
 - `providerOptions`
 - `sessionSecret`
 - `bypass`
+- `onAuthorize`
 
 ## Providers
 

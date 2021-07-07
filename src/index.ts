@@ -1,14 +1,7 @@
 import cookie from 'cookie'
 import jwt from 'jsonwebtoken'
 import * as providers from './providers'
-import { AuthProvider } from './types'
-
-export interface CreateAuthOptions {
-  sessionSecret?: string
-  provider?: string
-  providerOptions?: any
-  bypass?: boolean
-}
+import { CreateAuthOptions, AuthProvider } from './types'
 
 const noop = () => { }
 
@@ -50,6 +43,11 @@ export function createAuthMiddleware (opts: CreateAuthOptions) {
 
     // Try to authenticate
     const authRes = await auth.provider.authorize(req)
+
+    // Allow hooking on authorize
+    if (typeof opts.onAuthorize === 'function') {
+      await opts.onAuthorize(authRes, req)
+    }
 
     // Send headers
     if (authRes.headers) {

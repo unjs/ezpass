@@ -37,3 +37,11 @@ export type AuthProvider<T = any> = (options: T) => AuthImplementation
 export function defineAuthProvider<T = any> (provider: AuthProvider<T>): AuthProvider<T> {
   return provider
 }
+
+export interface CreateAuthOptions {
+  sessionSecret?: string
+  provider?: string
+  providerOptions?: any
+  bypass?: boolean
+  onAuthorize?: (authReses: AuthorizeResult, req: IncomingMessage) => void | Promise<void>
+}

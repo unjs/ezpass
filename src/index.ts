@@ -7,7 +7,7 @@ export interface CreateAuthOptions {
   sessionSecret?: string
   provider?: string
   providerOptions?: any
-  bypass: boolean
+  bypass?: boolean
 }
 
 const noop = () => { }

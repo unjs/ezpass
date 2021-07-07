@@ -5,7 +5,7 @@ import { createAuthMiddleware } from '../src'
 const app = createApp()
 
 app.useAsync(createAuthMiddleware({
-  enabled: false,
+  bypass: true,
   provider: 'basic',
   providerOptions: {
     username: 'test',

@@ -25,7 +25,7 @@ app.listen(3000)
 - `provider`
 - `providerOptions`
 - `sessionSecret`
-- `enabled` (default: `true`)
+- `bypass`
 
 ## Providers
 

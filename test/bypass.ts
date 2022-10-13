@@ -4,13 +4,13 @@ import { createAuthMiddleware } from '../src'
 
 const app = createApp()
 
-app.useAsync(createAuthMiddleware({
+app.use(createAuthMiddleware({
   bypass: true,
   provider: 'basic',
   username: 'test',
   password: 'test'
 }))
 
-app.useAsync(req => `Welcome ${req.auth.session ? 'user' : 'guest'}!`)
+app.use(req => `Welcome ${req.auth?.session ? 'user' : 'guest'}!`)
 
 listen(app)

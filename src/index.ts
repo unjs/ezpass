@@ -1,4 +1,4 @@
-import cookie from 'cookie'
+import { parse, serialize } from 'cookie'
 import jwt from 'jsonwebtoken'
 import * as providers from './providers'
 import { CreateAuthOptions, AuthProvider } from './types'
@@ -6,6 +6,7 @@ import { CreateAuthOptions, AuthProvider } from './types'
 const noop = () => { }
 
 export function createAuth (opts: CreateAuthOptions) {
+  // eslint-disable-next-line import/namespace
   const providerCtor = providers[opts.provider || 'basic'] as AuthProvider
   const provider = providerCtor(opts.providerOptions || opts)
 
@@ -22,7 +23,7 @@ export function createAuthMiddleware (opts: CreateAuthOptions) {
 
   return async (req, res, next = noop) => {
     // Load Session
-    const sessionStr = cookie.parse(req.headers.cookie || '').session
+    const sessionStr = parse(req.headers.cookie || '').session
     let session = {}
     if (sessionStr) {
       try {
@@ -62,7 +63,7 @@ export function createAuthMiddleware (opts: CreateAuthOptions) {
       if (!opts.sessionSecret) {
         throw new Error('[ezpass] Session secret is required (`sessionSecret`)')
       }
-      res.setHeader('Set-Cookie', cookie.serialize('session', jwt.sign(session, opts.sessionSecret)))
+      res.setHeader('Set-Cookie', serialize('session', jwt.sign(session, opts.sessionSecret)))
     }
 
     // Check for redirect

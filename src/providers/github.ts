@@ -1,6 +1,6 @@
 import requrl from 'requrl'
-import { withQuery, getQuery, parseQuery } from 'ufo'
-import { $fetch } from 'ohmyfetch/node'
+import { withQuery, getQuery } from 'ufo'
+import { $fetch } from 'ohmyfetch'
 import { defineAuthProvider } from '../types'
 
 export interface GithubAuthOptions {
@@ -32,13 +32,17 @@ export const github = defineAuthProvider<GithubAuthOptions>((opts) => {
       // Handle callback
       // Request access token
       const q = getQuery(req.url)
-      const res = parseQuery(await $fetch('https://github.com/login/oauth/access_token', {
+      const res = await $fetch('https://github.com/login/oauth/access_token', {
+        method: 'POST',
+        headers: {
+          accept: 'application/json'
+        },
         params: {
           client_id: opts.clientId,
           client_secret: opts.clientSecret,
           code: q.code
         }
-      }))
+      })
 
       if (res.error || !res.access_token) {
         return {

@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "license": "MIT",
   "repository": "unjs/ezpass",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "exports": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {

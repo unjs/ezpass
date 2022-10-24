@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "license": "MIT",
   "repository": "unjs/ezpass",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "exports": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -11,28 +11,29 @@
     "prepack": "yarn build",
     "lint": "eslint --ext .ts src",
     "release": "standard-version && git push --follow-tags && npm publish",
-    "dev": "nodemon"
+    "test": "node -r jiti/register"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "cookie": "^0.4.1",
+    "cookie": "^0.5.0",
     "jsonwebtoken": "^8.5.1",
-    "ohmyfetch": "^0.2.0",
+    "ohmyfetch": "^0.4.20",
     "requrl": "^3.0.2",
-    "ufo": "^0.7.7"
+    "ufo": "^0.8.6"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "latest",
-    "@types/node": "^16.0.0",
-    "eslint": "latest",
-    "express": "^4.17.1",
-    "h3": "^0.2.12",
-    "jiti": "^1.10.1",
-    "listhen": "^0.2.4",
-    "nodemon": "^2.0.9",
-    "standard-version": "^9.3.0",
-    "unbuild": "^0.3.1"
+    "@nuxtjs/eslint-config-typescript": "11.0.0",
+    "@types/cookie": "^0.5.1",
+    "@types/node": "^18.11.4",
+    "eslint": "8.26.0",
+    "express": "^4.18.2",
+    "h3": "^0.8.5",
+    "jiti": "^1.16.0",
+    "listhen": "^0.3.4",
+    "nodemon": "^2.0.20",
+    "standard-version": "^9.5.0",
+    "unbuild": "^0.9.4"
   }
 }
